@@ -1,0 +1,10 @@
+[package]
+name = "graph"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+arboard = "3.5.0"
+base64 = "0.22.1"
+clap = { version = "4.5.40", features = ["derive"] }
+url = "2.5.4"
