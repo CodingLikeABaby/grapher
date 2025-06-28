@@ -6,19 +6,19 @@ use arboard::Clipboard;
 #[derive(Parser, Debug)]
 #[command(author, version, about = "Mini outil encodeur multi-format")]
 struct Cli {
-    /// Encode en base64
+    /// Base64 encode
     #[arg(short = 'B', long = "Base64")]
     base64: bool,
 
-    /// Decode depuis base64
+    /// Base64 decode
     #[arg(short = 'b', long = "base64")]
     base64decode: bool,
 
-    /// Encode en URL
+    /// URL encode
     #[arg(short = 'U', long = "Url")]
     url: bool,
 
-    /// Decode depuis URL
+    /// URL decode
     #[arg(short = 'u', long = "url")]
     urldecode: bool,
 
@@ -38,7 +38,7 @@ struct Cli {
     #[arg(short = 'm', long = "b2ud")]
     b2ud: bool,
 
-    /// Texte à traiter
+    /// Text to process
     input: String,
 }
 
@@ -112,8 +112,8 @@ fn dub_base64_decode(input: &str) -> Result<String, String> {
     match decode_base64(input) {
         Ok(decoded_once) => {
             match decode_base64(&decoded_once) {
-                Ok(decoded_twice) => Ok(decoded_twice),          // Si double decode OK
-                Err(_) => Ok(decoded_once),                      // Sinon, retourne le premier
+                Ok(decoded_twice) => Ok(decoded_twice),          
+                Err(_) => Ok(decoded_once),                      
             }
         }
         Err(e) => Err(e),
